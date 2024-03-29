@@ -25,7 +25,7 @@ public class AlgoritmoPrincipal {
                     double celsius = scanner.nextDouble();
                     try {
                         double fahrenheit = ConversorTemperatura.celsiusAFahrenheit(celsius);
-                        System.out.println("La temperatura en Fahrenheit es: " + fahrenheit);
+                        System.out.println(celsius + "°C" + " = "  + fahrenheit + "°F");
                     } catch (ExceptionTemperatura e) {
                         System.out.println(e.getMessage());
                     }
@@ -35,7 +35,7 @@ public class AlgoritmoPrincipal {
                     double fahrenheit = scanner.nextDouble();
                     try {
                         celsius = ConversorTemperatura.fahrenheitACelsius(fahrenheit);
-                        System.out.println("La temperatura en Celsius es: " + celsius);
+                        System.out.println(fahrenheit + "°F" + " = "  + celsius + "°C");
                     } catch (ExceptionTemperatura e) {
                         System.out.println(e.getMessage());
                     }
