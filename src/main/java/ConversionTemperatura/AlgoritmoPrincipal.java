@@ -6,7 +6,7 @@ import ConversionTemperatura.ExceptionTemperatura;
 public class AlgoritmoPrincipal {
     public static void main(String[] args) {
 
-        System.out.println("\nConversor de temperatura");
+        System.out.println("\nConversor de temperatura");   //Menu de opciones que nos da a elegir entre convertir de Celsius a Fahrenheit, de Fahrenheit a Celsius o salir del programa.
         System.out.println("1. Celsius a Fahrenheit");
         System.out.println("2. Fahrenheit a Celsius");
         System.out.println("3. Salir\n");
