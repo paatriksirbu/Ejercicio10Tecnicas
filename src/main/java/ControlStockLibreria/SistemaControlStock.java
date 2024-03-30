@@ -26,7 +26,7 @@ public class SistemaControlStock {
         Libro libro = new Libro(nombreLibro);
         while (opcion != 4){
             switch (opcion){
-                case 1:
+                case 1: //Añadir stock donde se controla que no se desborde con un try-catch
                     System.out.println("Introduzca la cantidad de stock a agregar: ");
                     long cantidadLong = sc.nextLong();
 
@@ -36,7 +36,7 @@ public class SistemaControlStock {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 2:
+                case 2: //Quitar stock donde se controla que no se desborde con un try-catch
                     System.out.println("Introduzca la cantidad de stock a quitar: ");
                     cantidadLong = sc.nextLong();
 
@@ -59,8 +59,6 @@ public class SistemaControlStock {
             System.out.println("4. Salir");
             opcion = sc.nextInt();
         }
-
-
-
     }
+
 }
