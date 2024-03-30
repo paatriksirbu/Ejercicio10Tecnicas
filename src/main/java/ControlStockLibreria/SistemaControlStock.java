@@ -9,11 +9,13 @@ public class SistemaControlStock {
         Scanner sc = new Scanner(System.in);
         System.out.println("\n      -- Sistema de control de stock de libros --\n  ");
 
+        //Pedimos al usuario que introduzca el ISBN y el nombre del libro
         System.out.println("introduzca el ISBN del libro: ");
         String isbn = sc.nextLine();
         System.out.println("Introduzca el nombre del libro: ");
         String nombreLibro = sc.nextLine();
 
+        //Creamos un objeto de la clase Libro y preguntamos al usuario que accion desea realizar
         System.out.println("Que accion desea realizar?");
         System.out.println("1. Agregar stock");
         System.out.println("2. Quitar stock");
@@ -27,10 +29,7 @@ public class SistemaControlStock {
                 case 1:
                     System.out.println("Introduzca la cantidad de stock a agregar: ");
                     long cantidadLong = sc.nextLong();
-                    if (cantidadLong > Integer.MAX_VALUE){
-                        System.out.println("El stock del libro " + nombreLibro + " excede la capacidad de este sistema.");
-                        break;
-                    }
+
                     try{
                         libro.addToStock(cantidadLong);
                     } catch (ExcepcionStockDesbordado e){
@@ -40,10 +39,7 @@ public class SistemaControlStock {
                 case 2:
                     System.out.println("Introduzca la cantidad de stock a quitar: ");
                     cantidadLong = sc.nextLong();
-                    if (cantidadLong<Integer.MIN_VALUE){
-                        System.out.println("El stock del libro " + nombreLibro + " excede la capacidad de este sistema.");
-                        break;
-                    }
+
                     try{
                         libro.removeFromStock(cantidadLong);
                     } catch (ExcepcionStockDesbordado e){
