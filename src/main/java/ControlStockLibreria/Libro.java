@@ -1,4 +1,5 @@
 package ControlStockLibreria;
+import javax.swing.*;
 import java.util.*;
 
 public class Libro {
@@ -12,7 +13,7 @@ public class Libro {
     }
 
     public void addToStock(int cantidad) throws ExcepcionStockDesbordado{
-        int stockActual = 0;
+        int stockActual = this.stock.isEmpty() ? 0 : this.stock.get(this.stock.size() - 1);
         if (Integer.MAX_VALUE - stockActual < cantidad){
             throw new ExcepcionStockDesbordado(this.nombreLibro);
         }
@@ -29,8 +30,11 @@ public class Libro {
         this.stock.add(nuevoStock);
     }
 
-    public int getStock(){
-        return this.stock.get(this.stock.size() - 1);
+    public int getStock() {
+        if (this.stock.isEmpty()) {
+            return 0;
+        } else {
+            return this.stock.get(this.stock.size() - 1);
+        }
     }
-
 }
