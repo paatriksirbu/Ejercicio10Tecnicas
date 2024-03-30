@@ -1,7 +1,7 @@
 package ControlStockLibreria;
 import java.util.*;
 
-public class Libro {
+public class Libro implements ControlStock {
 
     private String nombreLibro;
     private ArrayList<Integer> stock;
@@ -11,26 +11,33 @@ public class Libro {
         this.stock = new ArrayList<Integer>();
     }
 
-    public void addToStock(int cantidad) throws ExcepcionStockDesbordado{
-        int stockActual = 0;
-        if (Integer.MAX_VALUE - stockActual < cantidad){
+    @Override
+    public void addToStock(long cantidadLong) throws ExcepcionStockDesbordado{
+        int stockActual = this.stock.isEmpty() ? 0 : this.stock.get(this.stock.size() - 1);
+        long suma = (long) stockActual + (long) cantidadLong;
+        if (suma > Integer.MAX_VALUE){
             throw new ExcepcionStockDesbordado(this.nombreLibro);
         }
-        int nuevoStock = stockActual + cantidad;
-        this.stock.add(nuevoStock);
+        long nuevoStock = stockActual + cantidadLong;
+        this.stock.add((int) nuevoStock);
     }
 
-    public void removeFromStock(int cantidad) throws ExcepcionStockDesbordado{
-        int stockActual = this.stock.get(this.stock.size() - 1);
-        if (cantidad > stockActual){
+    @Override
+    public void removeFromStock(long cantidadLong) throws ExcepcionStockDesbordado{
+        int stockActual = this.stock.isEmpty() ? 0 : this.stock.get(this.stock.size() - 1);
+        if (cantidadLong > stockActual){
             throw new ExcepcionStockDesbordado(this.nombreLibro);
         }
-        int nuevoStock = stockActual - cantidad;
-        this.stock.add(nuevoStock);
+        long nuevoStock = stockActual - cantidadLong;
+        this.stock.add((int) nuevoStock);
     }
 
-    public int getStock(){
-        return this.stock.get(this.stock.size() - 1);
+    @Override
+    public int getStock() {
+        if (this.stock.isEmpty()) {
+            return 0;
+        } else {
+            return this.stock.get(this.stock.size() - 1);
+        }
     }
-
 }
