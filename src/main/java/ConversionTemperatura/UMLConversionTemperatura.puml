@@ -1,0 +1,17 @@
+@startuml
+class ExceptionTemperatura {
+    + ExceptionTemperatura(mensaje : String)
+}
+
+class ConversorTemperatura {
+    + celsiusAFahrenheit(celsius : double) : double
+    + fahrenheitACelsius(fahrenheit : double) : double
+}
+
+class AlgoritmoPrincipal {
+    + main(args : String[]) : void
+}
+
+ExceptionTemperatura <|-- ConversorTemperatura : throws
+ConversorTemperatura <.. AlgoritmoPrincipal : uses
+@enduml
