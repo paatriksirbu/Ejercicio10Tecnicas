@@ -1,11 +1,27 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+interface ControlStock {
+    + addToStock(cantidadLong : long) : void
+    + removeFromStock(cantidadLong : long) : void
+    + getStock() : int
+}
 
-autonumber
+class Libro implements ControlStock {
+    - nombreLibro : String
+    - stock : ArrayList<Integer>
+    + Libro(nombreLibro : String)
+    + addToStock(cantidadLong : long) : void
+    + removeFromStock(cantidadLong : long) : void
+    + getStock() : int
+}
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+class ExcepcionStockDesbordado {
+    + ExcepcionStockDesbordado(nombreLibro : String)
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+class SistemaControlStock {
+    + main(args : String[]) : void
+}
+
+Libro ..> ExcepcionStockDesbordado : throws
+SistemaControlStock --> Libro : uses
 @enduml
